@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Biblioteca Escolar</title>
+  <link rel="stylesheet" href="ui.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📚 Biblioteca Escolar</h1>
+      <span class="subtitle">Gestión integral, moderna y profesional</span>
+    </header>
+    <aside>
+      <nav>
+        <button onclick="mostrarVista('libros')"><span>📖</span> Libros</button>
+        <button onclick="mostrarVista('usuarios')"><span>👤</span> Usuarios</button>
+        <button onclick="mostrarVista('prestamos')"><span>🔄</span> Préstamos/Devoluciones</button>
+        <button onclick="mostrarVista('mensajeria')"><span>💬</span> Mensajería</button>
+        <button onclick="mostrarVista('chatbot')"><span>🤖</span> Chatbot IA</button>
+        <button onclick="mostrarVista('reportes')"><span>📊</span> Reportes</button>
+        <button onclick="mostrarVista('respaldo')"><span>🗄️</span> Respaldo/Restauración</button>
+        <button onclick="mostrarVista('configuracion')"><span>⚙️</span> Configuración</button>
+      </nav>
+    </aside>
+    <main>
+      <div id="vista"></div>
+    </main>
+  </div>
+  <script src="ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Consola de Control de Copias</title>
+  <link rel="stylesheet" href="consola.css">
+</head>
+<body>
+  <h1>📚 Consola de Copias</h1>
+  <div id="login">
+    <input type="password" id="clave" placeholder="Ingrese clave">
+    <button onclick="login()">Entrar</button>
+  </div>
+  <div id="panel" style="display:none;">
+    <input type="text" id="filtro" placeholder="Buscar copia..." oninput="filtrar()">
+    <table id="tablaCopias">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Última conexión</th>
+          <th>Estado</th>
+          <th>Versión</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <script src="consola.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>

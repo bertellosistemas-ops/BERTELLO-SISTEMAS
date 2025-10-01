@@ -1,0 +1,10 @@
+body { font-family: Arial, sans-serif; background: #f4f4f9; color: #333; padding: 20px; }
+h1 { color: #444; }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 10px; border: 1px solid #ddd; text-align: center; }
+tr:nth-child(even) { background: #f9f9f9; }
+button { padding: 5px 10px; margin: 2px; border: none; border-radius: 4px; cursor: pointer; }
+.bloquear { background: #e74c3c; color: #fff; }
+.habilitar { background: #2ecc71; color: #fff; }
+.mensaje { background: #3498db; color: #fff; }
+.parche { background: #f39c12; color: #fff; }

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+*.log
+*.zip
+*.tar.gz
+*.exe
+*.dll
+*.so
+*.dmg
+*.app
+app/assets/*.csv
+app/assets/*.xlsx
+app/assets/*.mrc
+app/assets/*.rtf

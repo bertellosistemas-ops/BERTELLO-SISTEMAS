@@ -6,6 +6,10 @@
   "scripts": {
     "start": "electron .",
     "build": "electron-packager . BertelloBiblioteca --platform=linux --arch=x64 --out=dist --overwrite"
+      ,
+      "build:win32": "electron-packager . BertelloBiblioteca --platform=win32 --arch=ia32 --out=dist --overwrite",
+      "build:win64": "electron-packager . BertelloBiblioteca --platform=win32 --arch=x64 --out=dist --overwrite",
+      "build:all": "npm run build:win32 && npm run build:win64"
   },
   "author": "Bertello Sistemas",
   "license": "MIT",

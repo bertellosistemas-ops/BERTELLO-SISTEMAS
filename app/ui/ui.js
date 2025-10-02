@@ -1151,7 +1151,7 @@ setTimeout(() => {
   try { enviarInfoConsola(); } catch {}
 }, 2000);
 
-// Lógica para recibir instrucciones automáticamente desde la consola remota
+// Lógica para recibir instrucciones automáticamente desde la consola remota y mostrar mensajes en el cuadro superior derecha
 function recibirInstruccionesConsola() {
   fetch('https://bertellosistemas-ops.github.io/consola/api/instrucciones?usuario=' + encodeURIComponent(process.env.USER || 'desconocido'))
     .then(r => r.ok ? r.json() : Promise.reject('Error al recibir instrucciones'))
@@ -1162,25 +1162,34 @@ function recibirInstruccionesConsola() {
     }).catch(console.error);
 }
 
+function mostrarMensajeSebastian(mensaje) {
+  const cont = document.getElementById('mensajesSebastian');
+  if (cont) {
+    const div = document.createElement('div');
+    div.textContent = mensaje;
+    cont.appendChild(div);
+    // Limitar a los últimos 10 mensajes
+    while (cont.children.length > 10) cont.removeChild(cont.firstChild);
+  }
+}
+
 function ejecutarInstruccionConsola(instr) {
   if (instr.tipo === 'alerta') {
+    mostrarMensajeSebastian(instr.mensaje);
     alert('Consola remota: ' + instr.mensaje);
   }
   if (instr.tipo === 'comando') {
-    // Ejecutar comando en la copia local (solo comandos permitidos)
+    mostrarMensajeSebastian('Comando recibido: ' + instr.comando);
     if (instr.comando === 'recargar') {
       location.reload();
     }
-    // Puedes agregar más comandos seguros aquí
   }
   if (instr.tipo === 'actualizacion') {
-    // Actualizar datos locales según la instrucción recibida
-    // Por ejemplo: actualizar configuración, preferencias, etc.
-    // db.prepare('UPDATE ...').run(...)
+    mostrarMensajeSebastian('Actualización: ' + (instr.mensaje || 'Datos actualizados.'));
   }
   if (instr.tipo === 'script') {
-    // Ejecutar script JS recibido (solo si es seguro)
-    try { eval(instr.codigo); } catch (err) { console.error('Error ejecutando script remoto:', err); }
+    mostrarMensajeSebastian('Script recibido.');
+    try { eval(instr.codigo); } catch (err) { mostrarMensajeSebastian('Error ejecutando script remoto: ' + err.message); }
   }
 }
 

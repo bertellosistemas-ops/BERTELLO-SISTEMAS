@@ -44,35 +44,48 @@ function mostrarVista(vista) {
   const v = document.getElementById('vista');
   switch(vista) {
     case 'libros':
-      v.innerHTML = `
-        <h2>Libros</h2>
-         <button onclick="window.formNuevoLibro()">Nuevo libro</button>
-         <button onclick="window.formBuscarLibro()">Buscar libro</button>
-         <button onclick="window.formImportarLibros()">Importar</button>
-         <button onclick="window.formEtiquetas()">Etiquetas</button>
-         <button onclick="window.formEtiquetasLote()">Imprimir etiquetas por lote</button>
-         <button id="btnEtiquetasImportados" style="display:none;" onclick="window.generarEtiquetasImportados()">Generar etiquetas de libros importados</button>
-         <button onclick="window.formUbicacion()">Ubicación</button>
-         <button onclick="window.exportarLibrosCSV()">Exportar Libros CSV</button>
-         <button onclick="window.exportarLibrosExcel()">Exportar Libros Excel</button>
-         <button onclick="window.exportarLibrosMARC()">Exportar Libros MARC</button>
-         <button onclick="window.exportarLibrosRTF()">Exportar Libros RTF</button>
-window.exportarLibrosMARC = function exportarLibrosMARC() {
-  const { exportarLibrosMARC } = require('../modules/exportar_marc_rtf.js');
-  const outputPath = require('path').join(__dirname, '../assets/libros_exportados.mrc');
-  exportarLibrosMARC(outputPath);
-  alert('Libros exportados a assets/libros_exportados.mrc');
-}
-window.exportarLibrosRTF = function exportarLibrosRTF() {
-  const { exportarLibrosRTF } = require('../modules/exportar_marc_rtf.js');
-  const outputPath = require('path').join(__dirname, '../assets/libros_exportados.rtf');
-  exportarLibrosRTF(outputPath);
-  alert('Libros exportados a assets/libros_exportados.rtf');
-}
-        <div id="librosForm"></div>
-      `;
-      window.formNuevoLibro();
-      break;
+        v.innerHTML = `
+          <h2>Libros</h2>
+           <button onclick="window.formNuevoLibro()">Nuevo libro</button>
+           <button onclick="window.formBuscarLibro()">Buscar libro</button>
+           <button onclick="window.formImportarLibros()">Importar</button>
+           <button onclick="window.formEtiquetas()">Etiquetas</button>
+           <button onclick="window.formEtiquetasLote()">Imprimir etiquetas por lote</button>
+           <button id="btnEtiquetasImportados" style="display:none;" onclick="window.generarEtiquetasImportados()">Generar etiquetas de libros importados</button>
+           <button onclick="window.formUbicacion()">Ubicación</button>
+           <button onclick="window.exportarLibrosCSV()">Exportar Libros CSV</button>
+           <button onclick="window.exportarLibrosExcel()">Exportar Libros Excel</button>
+           <button onclick="window.exportarLibrosMARC()">Exportar Libros MARC</button>
+           <button onclick="window.exportarLibrosRTF()">Exportar Libros RTF</button>
+          <div id="librosForm"></div>
+        `;
+        // Definir handlers funcionales para cada botón
+        window.exportarLibrosMARC = function exportarLibrosMARC() {
+          const { exportarLibrosMARC } = require('../modules/exportar_marc_rtf.js');
+          const outputPath = require('path').join(__dirname, '../assets/libros_exportados.mrc');
+          exportarLibrosMARC(outputPath);
+          alert('Libros exportados a assets/libros_exportados.mrc');
+        };
+        window.exportarLibrosRTF = function exportarLibrosRTF() {
+          const { exportarLibrosRTF } = require('../modules/exportar_marc_rtf.js');
+          const outputPath = require('path').join(__dirname, '../assets/libros_exportados.rtf');
+          exportarLibrosRTF(outputPath);
+          alert('Libros exportados a assets/libros_exportados.rtf');
+        };
+        window.exportarLibrosCSV = function exportarLibrosCSV() {
+          const { exportarLibrosCSV } = require('../modules/exportar.js');
+          const outputPath = require('path').join(__dirname, '../assets/libros_exportados.csv');
+          exportarLibrosCSV(outputPath);
+          alert('Libros exportados a assets/libros_exportados.csv');
+        };
+        window.exportarLibrosExcel = function exportarLibrosExcel() {
+          const { exportarLibrosExcel } = require('../modules/exportar.js');
+          const outputPath = require('path').join(__dirname, '../assets/libros_exportados.xlsx');
+          exportarLibrosExcel(outputPath);
+          alert('Libros exportados a assets/libros_exportados.xlsx');
+        };
+        window.formNuevoLibro();
+        break;
     case 'usuarios':
       v.innerHTML = `
         <h2>Usuarios</h2>

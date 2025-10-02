@@ -2,14 +2,12 @@
   "name": "bertello-sistemas-biblioteca",
   "version": "1.0.0",
   "description": "Sistema de gestión integral para biblioteca escolar",
-  "main": "main.js",
+  "main": "app/main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . BertelloBiblioteca --platform=linux --arch=x64 --out=dist --overwrite"
-      ,
-      "build:win32": "electron-packager . BertelloBiblioteca --platform=win32 --arch=ia32 --out=dist --overwrite",
-      "build:win64": "electron-packager . BertelloBiblioteca --platform=win32 --arch=x64 --out=dist --overwrite",
-      "build:all": "npm run build:win32 && npm run build:win64"
+    "build": "electron-packager . BertelloBiblioteca --platform=linux --arch=x64 --out=dist --overwrite",
+    "build:win": "electron-builder --win --x64",
+    "build:all": "npm run build:win"
   },
   "author": "Bertello Sistemas",
   "license": "MIT",
@@ -17,9 +15,21 @@
     "better-sqlite3": "^8.0.0",
     "bwip-js": "^2.0.9",
     "electron": "^28.0.0",
+    "node-fetch": "^2.6.9",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "electron-packager": "^17.1.1"
+    "electron-packager": "^17.1.1",
+    "electron-builder": "^24.6.0"
+  },
+  "build": {
+    "appId": "com.bertello.biblioteca",
+    "productName": "Biblioteca Bertello",
+    "files": [
+      "**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    }
   }
 }
